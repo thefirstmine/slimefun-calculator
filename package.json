@@ -1,0 +1,15 @@
+{
+  "name": "slimefun-calculator",
+  "version": "1.0.0",
+  "description": "Slimefun Calculator Discord Bot just made for fun",
+  "main": "index.js",
+  "repository": "https://github.com/thefirstmine/slimefun-calculator",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TheFirstMine_PH  ",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
