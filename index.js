@@ -49,6 +49,12 @@ client.on('message', message => {
             .setFooter("Made by TheFirstMine_PH#6062")
             message.channel.send(embed)
         }
+    } else if(command == 'help'){
+        let embed = new Discord.MessageEmbed()
+        .setTitle("Help Embed")
+        .addField("s!ping", "haha ping pong")
+        .addField("s!help", "This message, duh")
+        .addField("s!calculate", "Calculates ammount of materials for your project!")
     }
 
 })
