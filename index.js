@@ -55,6 +55,7 @@ client.on('message', message => {
         .addField("s!ping", "haha ping pong")
         .addField("s!help", "This message, duh")
         .addField("s!calculate", "Calculates ammount of materials for your project!")
+        message.channel.send(embed)
     }
 
 })
