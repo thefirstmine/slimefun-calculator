@@ -1,3 +1,4 @@
+import displayItem from ./materials
 // made while 2 programmers arguing in a vc
 const Discord = require("discord.js");
 const { prefix, token } = require('./config.json')
@@ -21,25 +22,9 @@ client.on('message', message => {
             if (!amount) return message.channel.send("Please input a number!")
 
             let RNAembed = new Discord.MessageEmbed()
-            .setTitle("Reinforced Alloy Ingot Calculator")
-            .setThumbnail("https://media.discordapp.net/attachments/856788504297078814/856788520130707456/latest.png")
-            .setColor("BLUE")
-            .addField("Iron Dust", amount * 4)
-            .addField("Iron Ingot", amount * 4)
-            .addField("Coal", amount * 64)
-            .addField("Aluminum Dust", amount * 2)
-            .addField("Aluminum Ingot", amount * 2)
-            .addField("Copper Dust", amount * 5)
-            .addField("Copper Ingot", amount * 2)
-            .addField("Tin Dust", amount * 3)
-            .addField("Silver Dust", amount * 2)
-            .addField("Silver Ingot", amount * 1)
-            .addField("Gold Dust", amount * 12)
-            .addField("Lead Dust", amount * 1)
-            .addField("Lead Ingot", amount * 1)
-            .setFooter(`Requested by ${message.author.tag}`)
-            message.channel.send(RNAembed)
-            
+
+            displayItem('RAI', amount, RNAembed, message.channel)
+
         } else {
             let embed = new Discord.MessageEmbed()
             .setTitle("Please input an option to calculate!")
