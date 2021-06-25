@@ -25,7 +25,7 @@ const materials = {
     .setTitle(info.title)
     .setThumbnail(info.thumbnail)
     .setColor("BLUE")
-    .addFields(...info.items.map(({name, value}) => {name, value: value * amt }))
+    .addFields(...info.items.map(({name, value}) => ({name, value: value * amt })))
   
     channel.send(embed)
   }
