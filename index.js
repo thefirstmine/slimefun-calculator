@@ -3,6 +3,8 @@ const Discord = require("discord.js");
 const { prefix, token } = require('./config.json')
 const client = new Discord.Client();
 
+const materials = require('./materials.js')
+
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
   });
@@ -19,27 +21,10 @@ client.on('message', message => {
         if (args[0] === 'RAI'){
             const amount = parseInt(args[1]);
             if (!amount) return message.channel.send("Please input a number!")
-
-            let RNAembed = new Discord.MessageEmbed()
-            .setTitle("Reinforced Alloy Ingot Calculator")
-            .setThumbnail("https://media.discordapp.net/attachments/856788504297078814/856788520130707456/latest.png")
-            .setColor("BLUE")
-            .addField("Iron Dust", amount * 4)
-            .addField("Iron Ingot", amount * 4)
-            .addField("Coal", amount * 64)
-            .addField("Aluminum Dust", amount * 2)
-            .addField("Aluminum Ingot", amount * 2)
-            .addField("Copper Dust", amount * 5)
-            .addField("Copper Ingot", amount * 2)
-            .addField("Tin Dust", amount * 3)
-            .addField("Silver Dust", amount * 2)
-            .addField("Silver Ingot", amount * 1)
-            .addField("Gold Dust", amount * 12)
-            .addField("Lead Dust", amount * 1)
-            .addField("Lead Ingot", amount * 1)
-            .setFooter(`Requested by ${message.author.tag}`)
-            message.channel.send(RNAembed)
             
+            let RNAembed = new Discord.MessageEmbed();
+
+            materials('RAI', amount, RNAembed, message.channel) 
         } else {
             let embed = new Discord.MessageEmbed()
             .setTitle("Please input an option to calculate!")
@@ -56,6 +41,8 @@ client.on('message', message => {
         .addField("s!help", "This message, duh")
         .addField("s!calculate", "Calculates ammount of materials for your project!")
         message.channel.send(embed)
+    } else if(command === 'test'){
+        message.channel.send("this message always send")
     }
 
 })
