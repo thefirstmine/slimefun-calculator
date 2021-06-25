@@ -1,8 +1,9 @@
-import displayItem from ./materials
 // made while 2 programmers arguing in a vc
 const Discord = require("discord.js");
 const { prefix, token } = require('./config.json')
 const client = new Discord.Client();
+
+const materials = require('./materials.js')
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -20,11 +21,10 @@ client.on('message', message => {
         if (args[0] === 'RAI'){
             const amount = parseInt(args[1]);
             if (!amount) return message.channel.send("Please input a number!")
+            
+            let RNAembed = new Discord.MessageEmbed();
 
-            let RNAembed = new Discord.MessageEmbed()
-
-            displayItem('RAI', amount, RNAembed, message.channel)
-
+            materials('RAI', amount, RNAembed, message.channel) 
         } else {
             let embed = new Discord.MessageEmbed()
             .setTitle("Please input an option to calculate!")
@@ -41,6 +41,8 @@ client.on('message', message => {
         .addField("s!help", "This message, duh")
         .addField("s!calculate", "Calculates ammount of materials for your project!")
         message.channel.send(embed)
+    } else if(command === 'test'){
+        message.channel.send("this message always send")
     }
 
 })
