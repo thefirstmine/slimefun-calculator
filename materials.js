@@ -25,7 +25,7 @@ const materials = {
     .setTitle(info.title)
     .setThumbnail(info.thumbnail)
     .setColor("BLUE")
-    .addFields(...info.items)
+    .addFields(...info.items.map(a => a.value = value * amount))
   
     channel.send(embed)
   }
